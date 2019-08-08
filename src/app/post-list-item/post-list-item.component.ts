@@ -11,7 +11,7 @@ export class PostListItemComponent implements OnInit {
 // databinding: Récéption du model post
  @Input() post: Post;
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit() {

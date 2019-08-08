@@ -1,25 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule ,  LOCALE_ID} from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr, 'fr-FR');
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material';
-import { MomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { PostListComponent } from 'src/app/post-list/post-list.component';
 import { PostListItemComponent } from 'src/app/post-list-item/post-list-item.component';
-
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'DD/MM/YYYY',
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MM YYYY',
-    dateA11yLabel: 'DD/MM/YYYY',
-    monthYearA11yLabel: 'MM YYYY',
-  },
-};
 
 @NgModule({
   declarations: [
@@ -29,13 +21,11 @@ export const MY_FORMATS = {
   ],
   imports: [
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+  	MDBBootstrapModule.forRoot(),
   ],
-  providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'fr' }, //you can change useValue
-    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
-  ],
+  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

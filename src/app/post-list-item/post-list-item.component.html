@@ -3,7 +3,7 @@
               'list-group-item-danger': post.loveIts < 0 }">
   <p [ngClass]="{'msfdate': true,
                  'msfdate-love': post.loveIts > 0,
-                 'msfdate-dontlove': post.loveIts < 0 }">{{ post.create_at }}</p>
+                 'msfdate-dontlove': post.loveIts < 0 }">{{ post.create_at | date: 'short' : 'fr-FR' }}</p>
   <h4 [ngStyle]="{color: getColor()}">{{ post.title }} </h4> 
   <p [ngStyle]="{color: getColor()}"> {{ post.content }}</p>
   <br>
