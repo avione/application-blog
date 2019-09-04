@@ -2,11 +2,25 @@
 
 # Utilisation d'Angular 8, Material Design for Bootstrap 
 
-* Cette petite application montre l'utilisation des differents types de databinding pour le passage d'une class model: Post d'un component à un autre.
+* Cette petite application montre l'utilisation des differents types de databinding et le passage de propriétés paramètres et variables d'un component à un autre.
 
 * Dans cet exemple : 
-j'ai utilisé les directives structurelles *ngFor, ngStyle et ngClass  pour les components  PostListComponent,  PostListItemComponent et l'utilisation de @Input()  post: Post; pour le passage des élements title, content, create_at, loveits.
-J'ai aussi utilisé le pipe pour l'affichage de la date.
+- J'ai utilisé les directives structurelles *ngFor, ngStyle et ngClass dans les fichiers template html des components  PostListComponent,  PostListItemComponent. 
+
+- Dans le component AppComponent j'ai créé un tableau de post que j'ai passé en paramètre dans le template html de  la manière suivante:
+<app-post-list [posts]="posts"></app-post-list>
+- Que j'ai récupéré ensuite dans le component PostListComponent avec la ligne de comande suivante:
+@Input()  posts: Post[];
+
+- J'ai passé ensuite tous les posts du tableau du component PostListComponent par le template html au component PostListItemComponent  en utilisant la directive *ngFor de la manière suivante:
+<app-post-list-item  *ngFor="let post of posts" 
+  [post]="post"
+  ></app-post-list-item> 
+- Que j'ai récupéré dans PostListItemComponent avec la ligne de comande suivante:
+ @Input()  post: Post; 
+ (La class Post contientt les élements title, content, create_at, loveits)   
+ 
+- J'ai créé les fonctions   getColor() pour l'associer aux directives [ngStyle], onloveIts() et onDontLoveIts() pour les associer au évenement (click), ainsi que le pipe pour le format de l'affichage de la date.
 
 
 # Utilisation de LOCALE_ID: 
@@ -16,8 +30,9 @@ Il faut ajouter les import suivant dans app.module.ts:
 - import { registerLocaleData } from '@angular/common';
 - import localeFr from '@angular/common/locales/fr';
 - registerLocaleData(localeFr, 'fr-FR');
-et indiquer sur la ligne providers: {provide: LOCALE_ID, useValue: 'fr-FR' }
-providers: [{provide: LOCALE_ID, useValue: 'fr-FR' }]
+- il faut ensuite indiquer sur la ligne providers:
+- providers: [{provide: LOCALE_ID, useValue: 'fr-FR' }]
+
 # Dans la class model Post:
 this.create_at = new Date();
 # Pipe pour l'affichage et le format d'une date:

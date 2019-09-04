@@ -1,5 +1,3 @@
-import { formatDate } from '@angular/common';
-
 export class Post {
 	title: string;
 	content: string;
@@ -10,6 +8,6 @@ export class Post {
 		this.title=title;
 		this.content=content;
 		this.loveIts=loveIts;
-		this.create_at=new Date(); //formatDate( new Date(),'dd/MM/yyyy hh:mm:ss', 'fr-FR');
+		this.create_at=new Date();
 	}
 }
