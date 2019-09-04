@@ -28,11 +28,11 @@ export class PostListItemComponent implements OnInit {
 
   // Love Methode évenement Click
   onLoveIts() {
-    this.post.loveIts++;
+    this.post.loveIts= (this.post.loveIts == -1 ? 0 : 1);
   }
 
   // Don't Love Methode évenement Click
   onDontLoveIts() {
-    this.post.loveIts--;
+    this.post.loveIts= (this.post.loveIts == 1 ? 0 : -1);
   }
 }

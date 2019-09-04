@@ -4,10 +4,13 @@
 
 * Cette petite application montre l'utilisation des differents types de databinding pour le passage d'une class model: Post d'un component à un autre.
 
-* Dans cet exemple : j'ai utilisé les directives structurelles *ngFor, ngStyle et ngClass  pour les components  PostListComponent,  PostListItemComponent et l'utilisation de @Input()  post: Post; pour le passage des élements title, content, create_at, loveits.
+* Dans cet exemple : 
+j'ai utilisé les directives structurelles *ngFor, ngStyle et ngClass  pour les components  PostListComponent,  PostListItemComponent et l'utilisation de @Input()  post: Post; pour le passage des élements title, content, create_at, loveits.
+J'ai aussi utilisé le pipe pour l'affichage de la date.
+
 
 # Utilisation de LOCALE_ID: 
-Pour l'utilsation des dates en angular 8 et pour le format des dates
+Pour l'utilisation des dates en angular 8 et pour le format des dates
 Il faut ajouter les import suivant dans app.module.ts:
 - import { LOCALE_ID } from '@angular/core';
 - import { registerLocaleData } from '@angular/common';
@@ -15,7 +18,10 @@ Il faut ajouter les import suivant dans app.module.ts:
 - registerLocaleData(localeFr, 'fr-FR');
 et indiquer sur la ligne providers: {provide: LOCALE_ID, useValue: 'fr-FR' }
 providers: [{provide: LOCALE_ID, useValue: 'fr-FR' }]
-
+# Dans la class model Post:
+this.create_at = new Date();
+# Pipe pour l'affichage et le format d'une date:
+{{ post.create_at | date: 'dd/MM/yyyy HH:mm:ss' : 'fr-FR' }}
 
 # Installation pour windows:
 
