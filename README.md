@@ -2,25 +2,25 @@
 
 # Utilisation d'Angular 8, Material Design for Bootstrap 
 
-* Cette petite application montre l'utilisation des differents types de databinding et le passage de propriétés paramètres et variables d'un component à un autre.
+* Cette petite application montre l'utilisation des différents types de databinding et le passage de propriétés paramètres et variables d'un component à un autre.
 
 * Dans cet exemple : 
 - J'ai utilisé les directives structurelles *ngFor, ngStyle et ngClass dans les fichiers template html des components  PostListComponent,  PostListItemComponent. 
 
 - Dans le component AppComponent j'ai créé un tableau de post que j'ai passé en paramètre dans le template html de  la manière suivante:
 <app-post-list [posts]="posts"></app-post-list>
-- Que j'ai récupéré ensuite dans le component PostListComponent avec la ligne de comande suivante:
+- Que j'ai récupéré ensuite dans le component PostListComponent avec la ligne de commande suivante:
 @Input()  posts: Post[];
 
 - J'ai passé ensuite tous les posts du tableau du component PostListComponent par le template html au component PostListItemComponent  en utilisant la directive *ngFor de la manière suivante:
 <app-post-list-item  *ngFor="let post of posts" 
   [post]="post"
   ></app-post-list-item> 
-- Que j'ai récupéré dans PostListItemComponent avec la ligne de comande suivante:
+- Que j'ai récupéré dans PostListItemComponent avec la ligne de commande suivante:
  @Input()  post: Post; 
- (La class Post contientt les élements title, content, create_at, loveits)   
+ (La class modèle Post contient les éléments title, content, create_at, loveits)   
  
-- J'ai créé les fonctions   getColor() pour l'associer aux directives [ngStyle], onloveIts() et onDontLoveIts() pour les associer au évenement (click), ainsi que le pipe pour le format de l'affichage de la date.
+- J'ai créé les fonctions   getColor() pour l'associer aux directives [ngStyle], onloveIts() et onDontLoveIts() pour les associer au événement (click), ainsi que le pipe pour le format de l'affichage de la date.
 
 
 # Utilisation de LOCALE_ID: 
